@@ -172,8 +172,6 @@ class AutoGreenClicker:
         h.pack(fill="x", padx=20, pady=(16, 4))
         tk.Label(h, text="Auto Green Clicker", bg=BG_DARK, fg=TEXT_PRI,
                  font=("Segoe UI", 15, "bold")).pack(side="left")
-        tk.Label(h, text="  |  cinzento -> verde = clique automatico",
-                 bg=BG_DARK, fg=TEXT_MUT, font=("Segoe UI", 9)).pack(side="left", pady=(3,0))
 
         ttk.Separator(self.root).pack(fill="x", padx=20, pady=6)
 
@@ -207,7 +205,7 @@ class AutoGreenClicker:
             bg=BG_CARD, fg=TEXT_MUT, font=("Segoe UI", 10), justify="center")
         self.lbl_vazio.pack(expand=True)
 
-        self.status_var = tk.StringVar(value="Pronto.")
+        self.status_var = tk.StringVar(value="A postos")
         tk.Label(self.root, textvariable=self.status_var,
                  bg=BG_CARD, fg=TEXT_MUT, font=("Segoe UI", 8),
                  anchor="w", padx=10).pack(fill="x", padx=20, pady=(2, 6))
