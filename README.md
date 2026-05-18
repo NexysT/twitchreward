@@ -1,91 +1,94 @@
-# 🟢 Twitch Auto Reward Clicker
+<div align="center">
 
-Ferramenta de automação de ecrã que deteta quando um botão fica verde e clica automaticamente — feita especificamente para resgatar Channel Points e recompensas na Twitch sem teres de estar presente.
+# Twitch Auto Reward Clicker
 
----
+**Watches your screen. Clicks when it turns green. You sleep.**
 
-## 💡 Como funciona
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?style=flat&logo=windows&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat)
 
-A maioria dos rewards na Twitch (e noutras plataformas) seguem o mesmo padrão visual: o botão está **cinzento** enquanto não está disponível, e fica **verde** quando podes clicar.
-
-Este programa monitoriza em tempo real as áreas do ecrã que tu selecionas. Assim que deteta a transição de cinzento para verde, espera 1 segundo (para parecer humano) e clica automaticamente.
-
-Podes ir dormir — ele não perde nenhum reward.
+</div>
 
 ---
 
-## ✨ Funcionalidades
+## 💡 What it does
 
-- 🖱️ Seleção visual de áreas no ecrã com overlay interativo
-- 🎨 Deteção de cor em tempo real via análise de píxeis (RGB)
-- ⏱️ Delay de 1s após deteção + movimento suave do rato (mais natural)
-- 📋 Múltiplas áreas em simultâneo, cada uma com o seu nome
-- 🔁 Apenas clica na transição cinzento → verde (não repete)
-- 🎚️ Slider de sensibilidade ajustável (% de píxeis verdes para disparar)
-- 📊 Debug em tempo real com valores RGB e percentagem detetada
-- 🔔 Ícone na system tray — X minimiza, não fecha (como o Discord)
-- ✅ Compilável como `.exe` — sem consola, sem Python visível
+Most Twitch rewards follow the same pattern — the button is **grey** when unavailable, and turns **green** when you can claim it.
+
+This tool monitors any area of your screen in real time. The moment it detects grey → green, it waits a second and clicks. No browser extensions, no API keys, no accounts. Just pixel detection and a mouse click.
 
 ---
 
-## 🚀 Instalar e usar
+## Demo
 
-### Opção A — Correr direto com Python
+> Select area → monitor → auto click on green
 
+![demo](https://i.imgur.com/kRVvXEf.png)
+
+---
+
+## ✨ Features
+
+- 🖱️ Visual area selection with a fullscreen overlay
+- 🎨 Real-time RGB pixel analysis — detects the exact moment it turns green
+- ⏱️ 1s natural delay before clicking + smooth mouse movement
+- 📋 Supports multiple areas at once
+- 📊 Adjustable sensitivity slider with live debug output
+- 🔔 Minimizes to system tray (like Discord) — runs silently in the background
+- ✅ Builds into a standalone `.exe` — no terminal, no Python required
+
+---
+
+## 🚀 Quick Start
+
+**Run with Python**
 ```bash
 pip install pyautogui pillow numpy pystray
 python AutoGreenClicker.py
 ```
 
-### Opção B — Compilar como .exe (recomendado)
-
-1. Coloca `AutoGreenClicker.py`, `BUILD.bat` e `icon.ico` na mesma pasta
-2. Corre o `BUILD.bat`
-3. O `.exe` aparece em `dist\AutoGreenClicker.exe`
-4. Clica com botão direito → **Afixar na barra de tarefas**
-
----
-
-## 🎮 Caso de uso principal — Twitch Channel Points
-
-1. Abre a Twitch no browser
-2. Abre a app e clica em **+ Adicionar área**
-3. Seleciona a zona do botão de reward
-4. Dá-lhe um nome (ex: `"Pontos Twitch"`)
-5. Clica em **Iniciar monitorização**
-6. Fecha a janela (fica na tray) e vai fazer a tua vida
-
-Quando o reward ficar disponível, a app deteta o verde, aguarda 1 segundo e clica sozinha.
+**Build as `.exe`**
+```
+1. Place AutoGreenClicker.py, BUILD.bat and icon.ico in the same folder
+2. Run BUILD.bat
+3. Your exe is at dist\AutoGreenClicker.exe
+```
 
 ---
 
-## ⚙️ Sensibilidade
+## 🎮 How to use
 
-O slider controla a percentagem mínima de píxeis verdes dentro da área para disparar o clique.
+1. Open the app and click **+ Add area**
+2. Draw a rectangle over the reward button on screen
+3. Give it a name and hit **Start monitoring**
+4. Close the window — it stays in the tray
+5. Walk away
 
-| Situação | Valor recomendado |
+When the reward becomes available, the app catches it, waits 1 second, and clicks.
+
+---
+
+## ⚙️ Sensitivity
+
+The slider sets the minimum percentage of green pixels required to trigger a click.
+
+| Scenario | Recommended |
 |---|---|
-| Botão inteiro fica verde | 30 – 50% |
-| Só parte do botão fica verde | 10 – 20% |
-| Pequeno indicador / ícone | 3 – 8% |
+| Full button turns green | 30 – 50% |
+| Partial highlight | 10 – 20% |
+| Small icon or indicator | 3 – 8% |
 
-O debug mostra o valor real em tempo real — coloca o slider uns 10 pontos abaixo do que aparece quando o botão está verde.
-
----
-
-## 🛡️ Aviso
-
-Esta ferramenta interage com o ecrã localmente, sem aceder a qualquer API, token ou conta. Não injeta nada, não faz bypass de nada. É equivalente a um utilizador a clicar manualmente com o rato.
-
-Usa com responsabilidade.
+The live debug shows the real detected value — set the slider ~10 points below that.
 
 ---
 
-## 🧰 Tecnologias
+## Stack
 
-- Python 3
-- Tkinter (interface gráfica)
-- Pillow + NumPy (captura e análise de cor)
-- PyAutoGUI (controlo do rato)
-- Pystray (system tray)
-- PyInstaller (compilação para .exe)
+`Python` `Tkinter` `Pillow` `NumPy` `PyAutoGUI` `Pystray` `PyInstaller`
+
+---
+
+<div align="center">
+<sub>Built to never miss a reward again.</sub>
+</div>
