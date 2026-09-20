@@ -1,94 +1,42 @@
-<div align="center">
-
 # Twitch Auto Reward Clicker
 
-**Watches your screen. Clicks when it turns green. You sleep.**
+Ferramenta de automação para Windows que desenvolvi em Python. Seleciono uma área do ecrã, acompanho a proporção de píxeis verdes e, quando o limiar configurado é atingido, a aplicação pode executar um clique nessa área.
 
-![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?style=flat&logo=windows&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat)
+O funcionamento baseia-se na imagem do ecrã. Não precisa de acesso à conta Twitch, de uma extensão de navegador ou de uma chave de API.
 
-</div>
+## Funcionalidades
 
----
+- Seleção visual de uma ou várias áreas.
+- Deteção de píxeis verdes com sensibilidade ajustável.
+- Interface de monitorização com informação visual.
+- Integração com a área de notificação do Windows.
+- Script para gerar um executável local.
 
-## 💡 What it does
+## Requisitos
 
-Most Twitch rewards follow the same pattern — the button is **grey** when unavailable, and turns **green** when you can claim it.
+Windows com Python 3 e as dependências `pyautogui`, `pillow`, `numpy` e `pystray`. Para gerar o executável, instala também `pyinstaller`.
 
-This tool monitors any area of your screen in real time. The moment it detects grey → green, it waits a second and clicks. No browser extensions, no API keys, no accounts. Just pixel detection and a mouse click.
-
----
-
-## Demo
-
-> Select area → monitor → auto click on green
-
-![demo](https://i.imgur.com/kRVvXEf.png)
-
----
-
-## ✨ Features
-
-- 🖱️ Visual area selection with a fullscreen overlay
-- 🎨 Real-time RGB pixel analysis — detects the exact moment it turns green
-- ⏱️ 1s natural delay before clicking + smooth mouse movement
-- 📋 Supports multiple areas at once
-- 📊 Adjustable sensitivity slider with live debug output
-- 🔔 Minimizes to system tray (like Discord) — runs silently in the background
-- ✅ Builds into a standalone `.exe` — no terminal, no Python required
-
----
-
-## 🚀 Quick Start
-
-**Run with Python**
-```bash
-pip install pyautogui pillow numpy pystray
+```powershell
+python -m pip install pyautogui pillow numpy pystray
 python AutoGreenClicker.py
 ```
 
-**Build as `.exe`**
+## Compilar no Windows
+
+```powershell
+python -m pip install pyinstaller
+.\BUILD.bat
 ```
-1. Place AutoGreenClicker.py, BUILD.bat and icon.ico in the same folder
-2. Run BUILD.bat
-3. Your exe is at dist\AutoGreenClicker.exe
-```
 
----
+O executável gerado pelo script é guardado na pasta `dist`, se a compilação terminar sem erros.
 
-## 🎮 How to use
+## Como utilizo
 
-1. Open the app and click **+ Add area**
-2. Draw a rectangle over the reward button on screen
-3. Give it a name and hit **Start monitoring**
-4. Close the window — it stays in the tray
-5. Walk away
+1. Abro a aplicação e adiciono uma área de monitorização.
+2. Seleciono no ecrã a região que contém o botão pretendido.
+3. Ajusto a percentagem mínima de píxeis verdes.
+4. Inicio a monitorização e confirmo os resultados no painel.
 
-When the reward becomes available, the app catches it, waits 1 second, and clicks.
+## Limites
 
----
-
-## ⚙️ Sensitivity
-
-The slider sets the minimum percentage of green pixels required to trigger a click.
-
-| Scenario | Recommended |
-|---|---|
-| Full button turns green | 30 – 50% |
-| Partial highlight | 10 – 20% |
-| Small icon or indicator | 3 – 8% |
-
-The live debug shows the real detected value — set the slider ~10 points below that.
-
----
-
-## Stack
-
-`Python` `Tkinter` `Pillow` `NumPy` `PyAutoGUI` `Pystray` `PyInstaller`
-
----
-
-<div align="center">
-<sub>Built to never miss a reward again.</sub>
-</div>
+A deteção depende das cores apresentadas no ecrã, da escala e do tema da aplicação monitorizada. Não garante a identificação de todos os botões e pode reagir a outras zonas verdes. Testa primeiro numa área sem consequências importantes. Verifica também as regras do serviço onde pretendes utilizar automação.
